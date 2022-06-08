@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册界面</title>
+    <style>
+        body {
+            text-align: center;
+            color: rgb(124, 124, 195);
+            background-color: rgb(230, 230, 230);
+        }
+        
+        #regist {
+            background-color: white;
+            box-shadow: black 0px 0px 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            margin: auto;
+            margin-top: 100px;
+            padding: 25px 0px;
+            width: 400px;
+            position: relative;
+            /* left: 20%; */
+            text-align: center;
+        }
+        
+        #title {
+            font-size: x-large;
+        }
+        
+        #border {
+            position: relative;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background-color: rgb(124, 124, 195);
+            margin-bottom: 10px;
+        }
+        
+        input {
+            margin-top: 10px;
+            width: 40%;
+            color: black;
+            padding: 5px;
+            font-size: x-small;
+            outline: none;
+        }
+        
+        #submit {
+            border: 0px;
+            border-radius: 2px;
+            width: 100px;
+            height: 25px;
+            background-color: rgb(124, 124, 195);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="regist">
+        <div id="title">用户注册界面</div>
+        <br>
+        <div id="border"></div>
+
+        <div id="table">
+            <form action="#" autocomplete="on">
+                <label for="用户名: ">用户名：</label>
+                <input required type="text" placeholder="请输入用户名" name="usr" id="usr" /><br>
+                <label for="密码: ">密&emsp;码：</label>
+                <input required type="password" placeholder="请输入密码" name="pwd" id="pwd" /><br>
+                <label for="确定: ">确&emsp;定：</label>
+                <input required type="password" placeholder="请再次输入密码" name="pwden" id="pwden" /><br>
+                <label for="姓名: ">姓&emsp;名：</label>
+                <input required type="text" placeholder="请输入真实姓名" name="name" id="name" /><br>
+                <label for="邮箱">邮&emsp;箱：</label>
+                <input required type="email" placeholder="请输入电子邮箱" name="email" id="email" /><br><br>
+                <input id="submit" type="submit" value="提交">
+
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

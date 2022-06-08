@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5拖放API之图片相框效果</title>
+    <style>
+        #box {
+            border: 1px dashed black;
+            width: 350px;
+            min-height: 80px;
+            /* float: left; */
+            text-align: center;
+            font-size: 2em;
+            padding-top: 20px;
+        }
+        
+        #outer,
+        #information {
+            margin-top: 10px;
+            width: 700px;
+            /* display: none; */
+            text-align: center;
+        }
+        
+        #outer {
+            float: left;
+        }
+        
+        #inner {
+            position: relative;
+            float: left;
+            top: 60px;
+            left: -650px;
+            width: 590px;
+            height: 420px;
+            z-index: 9;
+        }
+        
+        #information {
+            position: relative;
+        }
+        
+        .showBox {
+            height: 700px;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        function dropdown(e) {
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+            if (files.length == 0) alert("请拖曳图片到虚线框中");
+            console.log(files);
+            var div = document.getElementsByClassName("showBox");
+            for (var i = 0; i < div.length; i++) {
+                div[i].remove();
+            }
+            for (var i = 0; i < files.length; i++) {
+                show(files[i]);
+            }
+        }
+
+        function show(file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            console.log(reader)
+            reader.onload = function() {
+                if (reader.result) {
+                    // 大div
+                    var div = document.createElement('div');
+                    div.setAttribute('class', "showBox");
+                    document.body.appendChild(div);
+
+                    //显示文件内容
+                    var img = new Image();
+                    img.src = reader.result;
+                    img.id = "inner";
+                    var imgOuter = new Image();
+                    imgOuter.id = "outer";
+                    imgOuter.src = "outer.jfif";
+
+                    var inf = document.createElement('div');
+                    inf.id = "information";
+                    var lastModified = file.lastModifiedDate;
+
+                    var lastModifiedStr = lastModified ? lastModified.toLocaleDateString() + ' ' +
+                        lastModified.toLocaleTimeString() : 'n/a';
+                    inf.innerHTML = '<strong>' + file.name + '</strong> (' + (file.type || 'n/a') + ')<br>大小：' + file.size + '字节<br>修改时间：' + lastModifiedStr;
+
+                    // 添加到box
+                    div.appendChild(imgOuter);
+                    div.appendChild(img);
+                    div.appendChild(inf);
+                }
+            };
+
+        }
+    </script>
+</head>
+
+<body>
+    <h3>HTML5拖放API之图片相框效果</h3>
+    <br>
+    <hr>
+    <div id="box" ondragover="event.preventDefault()" ondrop="dropdown(event)">
+        请将图片拖放至此处
+    </div>
+    <br>
+
+</body>
+
+</html>

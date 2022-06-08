@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单电子日历的设计与实现</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        body {
+            padding: 20px 10px;
+        }
+        
+        #calendar {
+            /* border: 1px solid red; */
+            background-color: rgb(248, 248, 248);
+            margin-left: 20px;
+            padding: 10px 10px;
+            border-radius: 5px;
+            width: max-content;
+            /* height: 290px; */
+        }
+        
+        #select {
+            width: 360px;
+            height: 45px;
+        }
+        
+        #select>* {
+            float: left;
+        }
+        
+        button {
+            height: 35px;
+            width: 70px;
+        }
+        
+        #day {
+            margin-top: 10px;
+            margin-left: 70px;
+        }
+        
+        #next {
+            float: right;
+        }
+        
+        #show,
+        .show {
+            text-align: center;
+            height: 37px;
+        }
+        
+        #show div,
+        .show div {
+            height: 17px;
+            margin-top: 0px;
+            font-size: 13px;
+            float: left;
+            width: 14%;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            var now = new Date();
+            now_year = now.getFullYear();
+            now_month = now.getMonth();
+            now_day = now.getDate();
+            count_year = now_year;
+            count_month = now_month;
+            addShow(now_year, now_month);
+
+        }
+
+        // 按照 年月显示
+        function addShow(year, month) {
+            var now = new Date();
+            var show = getArray(); // 获取show及下的七个div；
+            var divs = show.childNodes; // 七个div
+
+            // 循环本月31天 
+            for (var i = 1; i <= 32; i++) {
+                var day = new Date(year, month, i);
+                // console.log(day.toDateString())
+                // 判断是否在本月
+                if (day.getMonth() != month) {
+                    if (day.getDay() != 0) { // 如果不是星期日
+                        document.getElementById('calendar').appendChild(show);
+                    }
+                    break;
+                }
+                // 判断是否为星期日
+                if (day.getDay() == 0) {
+                    show = getArray(); // 创建下一排的元素对象
+                    divs = show.childNodes;
+                }
+                var week = day.getDay();
+                divs[week].innerHTML = i;
+                // 判断是否为今天
+                if (now_day == day.getDate() && now_month == day.getMonth() && now_year == day.getFullYear())
+                    divs[week].style.color = "red"; // 设置颜色
+                // 每个结尾添加元素
+                if (week == 6) document.getElementById('calendar').appendChild(show);
+            }
+            document.getElementById('day').innerHTML = year + "年" + (month + 1) + "月";
+
+        }
+
+        // 获取一行的空元素 show
+        function getArray() {
+            var show = document.createElement('div');
+            show.className = "show";
+            // 添加七个空的div元素
+            for (let index = 0; index < 7; index++) {
+                var child = document.createElement('div');
+                show.appendChild(child);
+                // child.innerHTML = index;
+            }
+            // 返回父节点
+            return show;
+        }
+
+        // 改变月份
+        function Change(tag) {
+            countDay(tag);
+            // 删除shows元素
+            var shows = document.getElementsByClassName('show');
+            var length = shows.length;
+            for (let index = 0; index < length; index++) {
+                document.getElementById('calendar').removeChild(shows[0]);
+            }
+            // 重新画shows
+            addShow(count_year, count_month);
+
+        }
+
+
+        // 计算年月
+        function countDay(tag) {
+            count_month += tag;
+            if (count_month < 0) { // 月小于0
+                count_month = 11;
+                count_year -= 1
+            }
+            if (count_month == 12) { // 月大于11
+                count_month = 0;
+                count_year += 1;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>简单电子日历的设计与实现</h3>
+    <br>
+    <hr>
+    <br>
+
+    <div id="calendar">
+        <div id="select">
+            <button id="pre" onclick="Change(-1)">上一月</button>
+            <p id="day">2022年4月</p>
+            <button id="next" onclick="Change(1)">下一月</button>
+        </div>
+        <div id="show">
+            <div>日</div>
+            <div>一</div>
+            <div>二</div>
+            <div>三</div>
+            <div>四</div>
+            <div>五</div>
+            <div>六</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

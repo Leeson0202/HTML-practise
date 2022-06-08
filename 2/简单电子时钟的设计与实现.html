@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单电子时钟的设计与实现</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        body {
+            margin-left: 10px;
+        }
+        
+        .are,
+        p {
+            float: left;
+            font-size: 6em;
+            color: red;
+        }
+        
+        .are {
+            margin: 0px 3px 0px;
+            border: 1px solid gray;
+            width: 120px;
+            height: 140px;
+            text-align: right;
+            padding-right: 5px;
+        }
+    </style>
+
+
+    <script>
+        window.onload = function() {
+            setInterval("changeTime()", 500);
+
+        }
+
+        function changeTime() {
+            var H = document.getElementById("H");
+            var M = document.getElementById("M");
+            var S = document.getElementById("S");
+            var time = getTime();
+            console.log(time);
+            H.innerHTML = time[0] > 10 ? time[0] : "0" + time[0];
+            M.innerHTML = time[1] > 10 ? time[1] : "0" + time[1];
+            S.innerHTML = time[2] > 10 ? time[2] : "0" + time[2];
+        }
+
+        function getTime() {
+            var now = new Date();
+            return [now.getHours(), now.getMinutes(), now.getSeconds()];
+        }
+    </script>
+</head>
+
+<body>
+    <br>
+    <h3>简单电子时钟的设计与实现</h3>
+    <br>
+    <hr>
+    <br>
+    <div id="H" class="are">00</div>
+    <p>:</p>
+    <div id="M" class="are">00</div>
+    <p>:</p>
+    <div id="S" class="are">00</div>
+</body>
+
+</html>

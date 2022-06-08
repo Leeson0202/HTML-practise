@@ -1,0 +1,11 @@
+h2 {
+    text-align: center;
+}
+
+canvas {
+    margin: auto;
+    border: 1px solid red;
+    width: 50%;
+    position: relative;
+    left: 30%;
+}

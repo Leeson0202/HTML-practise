@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>图片轮播</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+        #tab {
+            overflow: hidden;
+            width: 400px;
+            height: 250px;
+            position: relative;
+            float: left;
+            border: 1px solid red;
+        }
+        
+        #tab>img:not(:first-child) {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var pos = 0;
+            var len = 3;
+            setInterval(function() {
+                $("#tab img:eq(" + pos + ")").fadeOut(1000);
+                // $("img:eq(" + pos + ")").css('display', 'none'); /*显示图片*/
+                pos = ++pos == len ? 0 : pos;
+
+                setTimeout(function() {
+                    $("#tab img:eq(" + pos + ")").fadeIn(1000);
+                }, 1000);
+
+            }, 5000);
+        };
+    </script>
+</head>
+
+<body>
+
+    <div id="tab">
+        <img src="https://cdn.pixabay.com/photo/2019/11/19/06/02/seascape-4636549_960_720.jpg" width="400" height="250" />
+        <img src="https://images.pexels.com/photos/11506984/pexels-photo-11506984.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="400" height="250" />
+        <img src="https://images.pexels.com/photos/3848158/pexels-photo-3848158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="400" height="250" />
+    </div>
+
+</body>
+
+</html>

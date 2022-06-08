@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5拖放API之回收站效果</title>
+    <style>
+        #boxold {
+            border: 1px solid black;
+            padding: 50px;
+            width: 350px;
+            height: 400px;
+            float: left;
+        }
+        
+        .file {
+            width: 140px;
+        }
+        
+        .div {
+            float: left;
+            margin-right: 20px;
+            width: 150px;
+        }
+        
+        #dustbin {
+            margin-top: 50px;
+            width: 350px;
+        }
+    </style>
+    <script>
+        function dragstart(event) {
+            var e = event || window.event
+            e.dataTransfer.setData('text', e.target.id);
+        }
+
+
+        function dropdown(event) {
+            var e = event || window.event
+            var data = e.dataTransfer.getData('text');
+            console.log(document.getElementById(data))
+            document.getElementById('boxold').removeChild(document.getElementById(data));
+        }
+    </script>
+</head>
+
+<body>
+    <h3>HTML5拖放API之回收站效果</h3>
+    <br>
+    <hr>
+    <div id="boxold">
+        <div id="1" class="div" draggable="true" ondragstart="dragstart(event)">
+            <img class="file" src="./文件夹.svg" draggable="false" alt="文件夹1">
+            <span style="position: relative; bottom: 50px; left: 35px;" draggable="false">文件夹1 </span>
+        </div>
+        <div id="2" class="div" draggable="true" ondragstart="dragstart(event)">
+            <img class="file" src="./文件夹.svg" draggable="false" alt="文件夹2">
+            <span style="position: relative; bottom: 50px; left: 35px;" draggable="false">文件夹2</span>
+        </div>
+        <div id="3" class="div" draggable="true" ondragstart="dragstart(event)">
+            <img class="file" src="./文件夹.svg" draggable="false" alt="文件夹3">
+            <span style="position: relative; bottom: 50px; left: 35px;" draggable="false">文件夹3 </span>
+        </div>
+        <div id="4" class="div" draggable="true" ondragstart="dragstart(event)">
+            <img class="file" src="./文件夹.svg" draggable="false" alt="文件夹4">
+            <span style="position: relative; bottom: 50px; left: 35px;" draggable="false">文件夹4</span>
+        </div>
+    </div>
+    <img id="dustbin" src="./垃圾桶.svg" ondragover="event.preventDefault()" ondrop="dropdown(event)" alt="垃圾桶">
+
+
+</body>
+
+</html>

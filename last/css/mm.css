@@ -1,0 +1,192 @@
+.main-context {
+    margin-top: 5px;
+    height: 315px;
+    overflow: hidden;
+}
+
+#leftAside {
+    width: 140px;
+    height: 315px;
+    float: left;
+}
+
+#rightAside {
+    float: right;
+    width: 256px;
+    height: 315px;
+}
+
+#leftAside,
+#rightAside {
+    background: rgb(230, 230, 230);
+}
+
+aside>div:first-child {
+    margin: 6px auto;
+}
+
+aside>div:nth-child(n+2) {
+    margin: 5px auto;
+}
+
+.right-arrowhead {
+    width: 16px;
+    position: relative;
+    top: 2px;
+    margin: 0px 10px 0px 17px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+.square-div {
+    padding: 0px;
+    height: 135px;
+    width: 120px;
+    overflow: hidden;
+    /* margin: 10px 0px 0px; */
+    line-height: 0;
+    text-align: center;
+    font-size: 9pt;
+}
+
+.square {
+    margin: auto;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 100px;
+}
+
+#center-text {
+    /* background-color: beige; */
+    overflow: hidden;
+    /* padding: 5px; */
+    text-align: center;
+}
+
+#contact img {
+    position: relative;
+    left: 15px;
+    width: 110px;
+}
+
+#news ul li {
+    list-style: none;
+    position: relative;
+    left: 15px;
+}
+
+#news ul li a {
+    font-size: 10pt;
+}
+
+#center-text {
+    width: 504px;
+    height: 315px;
+    overflow: hidden;
+}
+
+#center-text img {
+    margin: auto;
+    position: relative;
+    vertical-align: bottom;
+    left: 0px;
+    width: 98%;
+    height: 315px;
+}
+
+#center-text>img:not(:first-child) {
+    display: none;
+}
+
+
+/* show 模块 */
+
+#show {
+    margin-top: 5PX;
+    background: rgb(230, 230, 230);
+    height: 255px;
+    overflow: hidden;
+}
+
+#show div {
+    margin-top: 6px;
+}
+
+#show>div.show-content {
+    height: 180px;
+    padding: 0px 0px 0px 14px;
+}
+
+#show>div.show-content>div {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: center;
+    display: table-cell;
+}
+
+#show>div.show-content>div>img {
+    height: 100px;
+}
+
+
+/* show 动作*/
+
+#show>div.show-content>div:hover {
+    cursor: pointer;
+}
+
+#fixed-show {
+    width: 100%;
+    border-radius: 10px;
+    background: #ccc;
+}
+
+#deleteDiv>img {
+    float: right;
+    width: 30px;
+}
+
+#fixed-show>img:hover {
+    cursor: pointer;
+}
+
+#show-img {
+    margin: auto;
+    text-align: center;
+    display: block;
+    padding: 30px 0px 30px 0px;
+    height: 90%;
+}
+
+#show-img>img {
+    margin: auto;
+    display: block;
+    width: 60%;
+}

@@ -1,0 +1,78 @@
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0px;
+    padding: 0px 20px 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(237, 232, 232);
+}
+
+#requests {
+    margin: auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 70%;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+    overflow: auto;
+    box-shadow: 10px 10px 15px rgb(149, 144, 144);
+}
+
+
+/* 不显示滚轮 */
+
+#requests::-webkit-scrollbar {
+    display: none;
+}
+
+h2 {
+    text-align: center;
+}
+
+#border {
+    margin: auto;
+    width: 90%;
+    padding: 0px;
+    border: 4px solid rgb(240, 177, 132);
+}
+
+form {
+    margin-left: 4%;
+    width: 92%;
+}
+
+li {
+    margin: 16px 0px 8px;
+}
+
+input {
+    margin: 8px;
+}
+
+form {
+    margin-bottom: 100px;
+}
+
+#requests>form>input[type=submit] {
+    position: relative;
+    margin-top: 50px;
+    border: 0px;
+    border-radius: 3px;
+    width: 20%;
+    height: 30px;
+    left: 40%;
+    background-color: rgb(240, 177, 132);
+}
+
+#requests>form>input[type=submit]:hover {
+    background-color: rgb(205, 184, 162);
+}

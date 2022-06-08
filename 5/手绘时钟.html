@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手绘时钟</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        h2 {
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function myscript() {
+            // 定义全局变量
+            width = 0, height = 0;
+            center = [];
+            // 初始化长宽
+            Init();
+            cas = document.getElementById("tutorial"); // canvas 
+            cas.width = center[0] * 2;
+            cas.height = center[1] * 2;
+            ctx = cas.getContext('2d'); // 画板
+            drawClock();
+
+            setInterval("drawClock()", 1000);
+        }
+    </script>
+    <script>
+        function getTime() {
+            //获取当前时间
+            var now = new Date();
+            var s = now.getSeconds();
+            var m = now.getMinutes();
+            var h = now.getHours();
+            //将小时设置成12小时制的数值
+            h %= 12;
+            return [h, m, s];
+        }
+
+        // 初始化画布的长宽
+        function Init() {
+            width = document.body.offsetWidth;
+            height = document.body.offsetHeight;
+            center[0] = width / 2;
+            center[1] = height * 0.8 / 2;
+            console.log(center[0], center[1], center)
+        }
+
+        // 表的外观
+        function drawClock() {
+            // 保存状态
+            ctx.save();
+            //清空画布
+            ctx.clearRect(0, 0, 2 * center[0], 2 * center[1]);
+            //设置画笔样式与位置
+            //设置画布中心为参照点
+            // translate(x,y)方法重新映射画布上的 (0,0) 位置。也就是画布的平移
+            ctx.translate(center[0], center[1]);
+            //以画布中心为参照点逆时针旋转90度
+            ctx.rotate(-Math.PI / 2);
+            //设置画笔线条的末端为圆形
+            ctx.lineCap = "round";
+            //设置画笔线条为6像素
+            ctx.lineWidth = 6;
+
+            // 画12h的刻度
+            for (var i = 0; i < 12; i++) {
+                ctx.beginPath();
+                //每次顺时针旋转60度
+                ctx.rotate(Math.PI / 6);
+                //绘制线段的路径
+                ctx.moveTo(center[1] * 0.8, 0);
+                ctx.lineTo(center[1] * 0.8 - 20, 0);
+                //描边路径
+                ctx.stroke();
+            }
+
+            //画60分钟对应的刻度
+            ctx.lineWidth = 5;
+            for (i = 0; i < 60; i++) {
+                ctx.beginPath();
+                ctx.moveTo(center[1] * 0.8, 0);
+                ctx.lineTo(center[1] * 0.8 - 5, 0);
+                ctx.stroke();
+                ctx.rotate(Math.PI / 30);
+            }
+
+            //保存当前状态
+            ctx.save();
+
+            var time = getTime();
+            console.log(time)
+
+            //绘制时针，保存当前状态
+            //旋转角度
+            ctx.rotate(time[0] * (Math.PI / 6) + (Math.PI / 360) * time[1] + (Math.PI / 21600) * time[2]);
+            //设置时间样式
+            ctx.lineWidth = 12;
+            //开始绘制时针路径
+            strock(0, 0, 120, 0);
+            ctx.restore();
+
+
+            //绘制分针，保存当前状态
+            ctx.save();
+            //旋转角度
+            ctx.rotate((Math.PI / 30) * time[1] + (Math.PI / 1800) * time[2]);
+            //设置分针样式
+            ctx.lineWidth = 8;
+            //设置分针路径
+            strock(0, 0, 180, 0);
+            //恢复之前路径
+            ctx.restore();
+
+            //绘制秒针，保存当前状
+            ctx.save();
+            //设置秒针路径
+            ctx.rotate(time[2] * Math.PI / 30);
+            ctx.strokeStyle = "red";
+            //6像素
+            ctx.lineWidth = 6;
+            // 描绘秒钟
+            strock(-20, 0, center[1] - 70, 0);
+            ctx.fillStyle = "red";
+            //绘制中心的原点
+            ctx.beginPath();
+            ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
+            //填充原点为红色
+            ctx.fill();
+
+            ctx.restore();
+
+
+            //绘制表盘
+            //设置样式
+            ctx.lineWidth = 12;
+            ctx.strokeStyle = "gray";
+            //开始绘制表盘路径
+            ctx.beginPath();
+            ctx.arc(0, 0, center[1] - 30, 0, Math.PI * 2, true);
+            //描边路径
+            ctx.stroke();
+
+
+            // 恢复指针初始化状态
+            ctx.restore();
+        }
+
+        // 画直线
+        function strock(x, y, desX, desY) {
+            // 设置颜色
+            // ctx.strokeStyle = "rgb(131,111,255)";
+
+            // 画直线
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(desX, desY);
+            ctx.stroke();
+        }
+    </script>
+</head>
+
+<body>
+    <h2>手绘时钟</h2>
+    <br>
+    <canvas id="tutorial"></canvas>
+</body>
+
+</html>

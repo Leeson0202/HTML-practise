@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pintu.css">
+    <title>HTML5画布综合项目之拼图游戏</title>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+            ids = [
+                [],
+                [],
+                []
+            ]
+
+            // cancas像素大小
+            canvas.width = 900;
+            canvas.height = canvas.width;
+            // canvas 实际大小
+            canvas.style.height = canvas.style.width + 'px';
+            var context = canvas.getContext('2d');
+            var image = new Image();
+
+            image.src = './mnls.jpg';
+            getRandom();
+            image.onload = function() {
+                // 图片的实际大小
+                imgWidh = image.naturalWidth;
+                imgHeight = image.naturalHeight;
+                // 添加分块图片
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        // context.drawImage(image, source_x, source_y, source_width, source_height, x, y, width, heigh);
+                        context.drawImage(image, imgWidh / 3 * i, imgWidh / 3 * j, imgWidh / 3, imgHeight / 3, canvas.width / 3 * i, canvas.width / 3 * j, canvas.width / 3, canvas.width / 3);
+
+
+                    }
+
+                }
+
+            }
+
+
+        }
+    </script>
+    <script>
+        function getRandom() {
+            var set = new Set();
+            for (var i = 0; i < 9; i++) {
+                var indexI = Math.floor(Math.random() * 3);
+                var indexj = Math.floor(Math.random() * 3);
+                set.forEach(element => {
+                    if (element[0] == indexI && element[1] == indexj) {
+                        set.delete(element);
+                        i--;
+                        return;
+                    }
+                });
+                set.add([indexI, indexj]);
+
+            }
+            console.log(set);
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <h2>HTML5画布综合项目之拼图游戏</h2>
+    <hr>
+    <canvas id="canvas"></canvas>
+
+
+
+
+</body>
+
+</html>
