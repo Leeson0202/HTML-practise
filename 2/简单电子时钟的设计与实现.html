@@ -47,9 +47,9 @@
             var S = document.getElementById("S");
             var time = getTime();
             console.log(time);
-            H.innerHTML = time[0] > 10 ? time[0] : "0" + time[0];
-            M.innerHTML = time[1] > 10 ? time[1] : "0" + time[1];
-            S.innerHTML = time[2] > 10 ? time[2] : "0" + time[2];
+            H.innerHTML = time[0] >= 10 ? time[0] : "0" + time[0];
+            M.innerHTML = time[1] >= 10 ? time[1] : "0" + time[1];
+            S.innerHTML = time[2] >= 10 ? time[2] : "0" + time[2];
         }
 
         function getTime() {
