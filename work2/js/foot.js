@@ -24,7 +24,7 @@ function footAction() {
                 // player['curTime'].innerText = "--:--"
                 if (!player['audio'].duration) return;
                 player['pausetag'] = 1
-                $('#pause-btn').attr("src", "/img/暂停.svg")
+                $('#pause-btn').attr("src", "./img/暂停.svg")
                 player['audio'].play();
                 timeCal()
                 player['allTime'].innerText = formatTime(player['audio'].duration);
@@ -33,7 +33,7 @@ function footAction() {
 
             } else {
                 player['pausetag'] = 0
-                $('#pause-btn').attr("src", "/img/播放.svg")
+                $('#pause-btn').attr("src", "./img/播放.svg")
                 player['audio'].pause();
             }
         }
@@ -58,7 +58,7 @@ function musicPlay(music) {
         player['audio'].addEventListener("canplay", function() {
             // console.log(formatTime(player['audio'].duration));
             player['allTime'].innerText = music['fullTime']
-            $('#pause-btn').attr("src", "/img/暂停.svg")
+            $('#pause-btn').attr("src", "./img/暂停.svg")
             player['audio'].play();
             player['pausetag'] = 1
             timeCal()
