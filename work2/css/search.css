@@ -1,0 +1,165 @@
+html {
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+ ::-webkit-scrollbar {
+    display: none;
+}
+
+#top-hot {
+    padding-top: 5px;
+}
+
+#table-div {
+    display: block;
+    /* border: 1px solid red; */
+    width: 90%;
+    margin: auto;
+    padding-top: 10%;
+    top: 10px;
+    text-align: center;
+}
+
+.body-context {
+    /* border: 1px solid yellow; */
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    background-color: #777;
+    margin: auto;
+    display: none;
+}
+
+#search-div,
+#search-table {
+    display: inline-block;
+}
+
+#search-div {
+    width: 60%;
+    border: #333 solid 1px;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: 0.4s linear;
+    max-width: 650px;
+    padding-left: 0%;
+    box-sizing: border-box;
+}
+
+#search-div input {
+    float: left;
+    background: #fff;
+    outline: none;
+    border: 0px solid #333;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+    width: 80%;
+    height: 40px;
+    padding: 0%;
+    padding-left: 6px;
+    font-size: medium;
+}
+
+#search-div div {
+    float: right;
+    top: 0%;
+    color: #fff;
+    width: 17.8%;
+    height: 31px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-top: 9px;
+}
+
+@media screen and (max-width:600px) {
+    #search-div {
+        width: 99%;
+        transition: 0.4s linear;
+    }
+}
+
+#search-table {
+    display: table;
+    /* table-layout: fixed; */
+    width: 99%;
+    margin: auto;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#table-tag {
+    background-color: #fff;
+    border: 1px solid #999;
+    width: 100%;
+    height: 2.3em;
+    box-shadow: 0px 0px 20px #999 inset;
+    color: #333;
+}
+
+#search-table tr {
+    width: 100%;
+    height: 40px;
+    justify-content: flex-start;
+}
+
+#search-table tbody tr * {
+    text-align: left;
+}
+
+td {
+    height: 40px;
+    font-size: small;
+    color: #fff;
+}
+
+tr:nth-child(2n) {
+    background-color: #6e6e6e;
+}
+
+.first {
+    text-align: left;
+}
+
+.mName {
+    position: relative;
+    display: inline-block;
+    height: 16.8px;
+    width: 75%;
+    overflow: hidden;
+}
+
+.playmusic {
+    float: left;
+    position: relative;
+    width: 16px;
+    margin: 0px 7px -4px;
+    left: 0%;
+}
+
+tr span:hover {
+    cursor: pointer;
+    border-bottom: 1px dotted #fff;
+}
+
+tr img:hover {
+    cursor: pointer;
+}
+
+.tianjia {
+    width: 14px;
+    justify-self: unset;
+}

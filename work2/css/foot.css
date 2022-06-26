@@ -1,0 +1,113 @@
+#foot-box {
+    /*border: 1px solid red;*/
+    margin: 0px;
+    padding: 0%;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 55px;
+    background-color: #333;
+    align-items: center;
+}
+
+#foot-box-detail {
+    /* border: 1px solid red; */
+    margin: auto;
+    padding: 0%;
+    position: relative;
+    bottom: 0px;
+    width: 84%;
+    height: 55px;
+    background-color: #333;
+    transition: 0.4s linear;
+}
+
+@media screen and (max-width:900px) {
+    #foot-box-detail {
+        width: 100%;
+        transition: 0.4s linear;
+    }
+}
+
+#player {
+    position: absolute;
+    background-color: #333;
+    float: left;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    padding-left: 150px;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.up-next {
+    position: absolute;
+    /* border: 1px solid #ff0000; */
+    background-color: #333;
+    width: 150px;
+    left: 0px;
+    height: 100%;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.l-btn {
+    position: relative;
+    /*border: 1px solid red;*/
+    height: 50%;
+    overflow: hidden;
+    float: left;
+    margin-left: 4%;
+}
+
+#fUrl {
+    position: relative;
+    top: 4px;
+    /*border: 1px solid red;*/
+    width: 45px;
+    float: left;
+    overflow: hidden;
+}
+
+.systemUpdates {
+    margin: auto;
+    position: relative;
+    float: left;
+    width: 95%;
+    margin-left: 2%;
+    bottom: 0px;
+    margin-top: 8px;
+}
+
+.progressBar {
+    margin-top: 21px;
+    width: 100%;
+    height: 5px;
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.barContent {
+    height: 5px;
+    width: 0px;
+    background: #777;
+    border-radius: 4px;
+}
+
+.systemUpdates {
+    /* border: 1px solid red; */
+    color: #fff;
+    font-size: smaller;
+}
+
+.process {
+    float: right;
+    margin-bottom: 3px;
+}
+
+#music-name {
+    margin-bottom: 4px;
+    margin-left: 5px;
+    float: left;
+}

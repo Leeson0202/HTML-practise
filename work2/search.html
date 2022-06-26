@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
+    <script type="text/javascript" src="js/music.js"></script>
+    <link rel="stylesheet " href="css/search.css " />
+
+</head>
+
+<body>
+    <div id="table-div">
+        <div id="search-div">
+            <input id="search-input-b" type="text" onkeydown="search_enter(event)" placeholder="输入歌名">
+            <div id="search-btn" onclick="showResult()"><span>搜索</span></div>
+        </div>
+        <div></div>
+        <table id="search-table">
+            <!-- <tr id="table-tag">
+                <th class="first">
+                    <img class="playmusic" src="img/选择播放.svg"/>歌名
+                </th>
+                <th>歌手</th>
+                <th>时长</th>
+            </tr>-->
+
+        </table>
+    </div>
+</body>
+<script>
+    $(window).ready(function() {
+        musicList = []
+        searchInit();
+        searchAction();
+    });
+</script>
+
+</html>

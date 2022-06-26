@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vditor</title>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/vditor@3.8.13/dist/index.css">
+  <script src="js/index.min.js"></script> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+<script src="https://cdn.jsdelivr.net/npm/vditor/dist/index.min.js"></script>
+
+
+  <link rel="stylesheet" href="css/home.css">
+  <script src="js/home.js"></script>
+</head>
+
+
+
+<body>
+  <br><br>
+  <div id="vditor">
+    <h1>editor</h1>
+    <h4>加载中。。。。。</h4>
+  </div>
+  <script>
+    var xmlhttp, text;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    }
+    else {// code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        text = this.responseText;
+        // console.log(text);
+        new Vditor('vditor', {
+          value: ' \n\n\n ',
+          width: "100%",
+          placeholder: '开始你的Markdown笔记\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n ',
+          preview: { markdown: { toc: true } },
+          outline: {
+            enable: true,
+            position: 'left'
+          }
+        })
+      }
+    }
+    xmlhttp.open("GET", './md.txt', true);
+    xmlhttp.send();
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/music.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+        }
+        
+        body {
+            background: url(img/login.jpg) no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+            padding: 0%;
+            margin: 0%;
+            overflow: hidden;
+        }
+        
+        #index-div {
+            position: relative;
+            float: right;
+            margin-right: 18%;
+            top: 24%;
+            /*border: 1px solid blue;*/
+            width: 340px;
+            text-align: center;
+        }
+        
+        #login-title {
+            font: 2em sans-serif;
+            font-weight: 700;
+            color: rgb(120, 120, 120);
+        }
+        
+        #index-form {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            padding-top: 15px;
+            background-color: white;
+            /* border: 1px solid red; */
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+            opacity: 0.95;
+        }
+        
+        input {
+            border-top: white;
+            border-left: white;
+            border-right: white;
+            border-color: rgb(214, 216, 218);
+            /* border: 1px solid red; */
+            margin-top: 16px;
+            padding-left: 5px;
+            width: 85%;
+            height: 3em;
+            font-size: 1em;
+            outline: none;
+        }
+        
+        button {
+            background-color: rgb(65, 65, 65);
+            border: 1px solid rgb(49, 50, 51);
+            border-radius: 3px;
+            margin-top: 30px;
+            color: white;
+            width: 90%;
+            height: 3em;
+        }
+        
+        a {
+            color: rgb(0, 102, 255);
+            font-size: 0.8em;
+            text-decoration: none;
+        }
+        
+        @media screen and (max-width: 900px) {
+            #index-div {
+                float: none;
+                margin: auto;
+                margin-top: 0%;
+                top: 18%;
+                transition: 0.4s linear;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        var data = isLoad()
+        $(window).ready(function(event) {
+            /*
+            1. 获取cookie信息
+            2. 判断是否登录（登录则直接跳转）
+            3. 处理事项
+
+            */
+
+
+            $('#pwd').bind('keydown', function(event) {
+                var event = window.event || arguments.callee.caller.arguments[0];
+                if (event.keyCode == 13) {
+                    $("#form-submit").click();
+                }
+            });
+
+            $("input").blur(function() {
+                if ($(this).val().length == 0) {
+                    if ($(this).is("#usr"))
+                        $(this).attr("placeholder", "手机号或账户不能为空")
+                    else
+                        $(this).attr("placeholder", "密码不能为空")
+
+                }
+            });
+
+
+            $("#form-submit").click(function() { // 获取表格数据 判断是否是空
+                var t = $("form").serializeArray();
+                $.each(t, function(i, item) {
+                    if (item['value'] == '') {
+                        flag = 1;
+                        return false
+                    } else {
+                        flag = 0;
+                    }
+                });
+                if (flag != 1) {
+                    $.ajax({
+                        type: "post",
+                        url: "user/login",
+                        dataType: "json",
+                        data: {
+                            usr: $("#usr").val(),
+                            pwd: $("#pwd").val(),
+                            appId: "leeson"
+                        },
+                        success: function(data) {
+                            if (data.code == 200) {
+                                // 设置cookie到期时间
+                                let exp = new Date();
+                                exp.setTime(exp.getTime() + 30 * 60 * 1000); //过期时间 5分钟
+
+                                document.cookie = "msg=" + data.msg + ";expires=" + exp.toGMTString();
+                                document.cookie = "appId=leeson" + ";expires=" + exp.toGMTString();
+                                window.open("index.html", "_self");
+
+                            }
+                        }
+                    })
+                }
+            })
+
+
+        });
+    </script>
+
+
+    <div id="index-div">
+        <span id="login-title">asedrfa Music</span>
+        <div id="index-form">
+            <form id="index-form-data">
+                <input id="usr" style="margin-bottom: 5px;" type="text" name="usr" placeholder="手机号或账户">
+                <br>
+                <input id="pwd" style="margin-bottom: 5px;" type="password" name="pwd" placeholder="密码">
+                <br>
+
+            </form>
+            <div style="margin-top: 10px;">
+                <button id="form-submit">登录</button>
+                <br>
+
+                <div style="text-align: left;margin-top: 20px; ">
+                    <a style="margin-left: 25px;" href="forget.html">忘记密码？</a>
+                    <a style=" margin-left: 185px;" href="register.html">去注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

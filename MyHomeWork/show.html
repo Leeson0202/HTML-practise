@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="theme-color" content="#3b3e43">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no" />
+<title>Vditor 示例 - 链滴</title>
+<meta name="description" content="记录生活，连接点滴。" />
+<meta property="og:description" content="记录生活，连接点滴。" />
+<link rel="preconnect" href="https://ld246.com" />
+<link rel="preconnect" href="https://b3logfile.com" />
+<link class="hacpai-favicon" rel="icon" type="image/png" href="https://ld246.com/images/favicon.png" />
+<link class="hacpai-favicon" rel="apple-touch-icon" href="https://ld246.com/images/apple-touch-icon.png">
+<link class="hacpai-favicon" rel="shortcut icon" type="image/x-icon" href="https://ld246.com/images/faviconH.png">
+<meta name="copyright" content="B3log" />
+<meta http-equiv="Window-target" content="_top" />
+<meta property="og:locale" content="zh-cmn-Hans" />
+<meta property="og:title" content="Vditor 示例 - 链滴" />
+<meta property="og:site_name" content="链滴" />
+<meta property="og:url" content="https://ld246.com/guide/markdown" />
+<meta property="og:image" content="https://ld246.com/images/faviconH.png" />
+<link rel="search" type="application/opensearchdescription+xml" title="LianDi" href="/opensearch.xml">
+<link rel="stylesheet" type="text/css" href="https://ld246.com/js/lib/vditor/dist/index.css?v=3.8.15">
+<script defer src="https://ld246.com/js/common/icon/classic/icon.js" type="400341154408d83425184257-text/javascript"></script>
+<script defer src="https://ld246.com/js/lib/jquery.min.js" type="400341154408d83425184257-text/javascript"></script>
+<script defer src="https://ld246.com/js/lib/lib.js" type="400341154408d83425184257-text/javascript"></script>
+<script defer src="https://ld246.com/js/lib/vditor/dist/index.min.js?v=3.8.15" type="400341154408d83425184257-text/javascript"></script>
+<link rel="canonical" href="https://ld246.com/guide/markdown">
+<link href="https://ld246.com/dist/skins/classic/md-guide.4260bf72eb2fd8cd7ffd.css" rel="stylesheet"><script defer src="https://ld246.com/dist/skins/classic/md-guide.06e857f4765162a34f61.js" type="400341154408d83425184257-text/javascript"></script></head>
+<body class="fn__flex-column">
+<header class="nav">
+<div class="wrapper">
+<a class="nav__logo" href="https://ld246.com">
+<svg>
+<use xlink:href="#iconLogo"></use>
+</svg>
+</a>
+<nav class="nav-tabs">
+<div class="details">
+<summary>
+<span class="nav__item">
+链滴
+<div class="fn__space5"></div>
+<svg class="svg--small nav__svg--show">
+<use xlink:href="#iconChevronDown"></use>
+</svg>
+</span>
+</summary>
+<details-menu class="fn__layer fn__layer--big">
+<a class="item" href="https://ld246.com/article/1440573175609">社区愿景和功能特性</a>
+<hr>
+<a class="item" href="https://ld246.com/guide/markdown">优雅的 Markdown 所见即所得编辑</a>
+<a class="item" href="https://ld246.com/article/1474030007391">快捷键交互</a>
+<hr>
+<a class="item" href="https://ld246.com/article/1458317916817">随时自由编辑分享内容</a>
+<a class="item" href="https://ld246.com/article/1533643205025">支持注销账号来去自由</a>
+<hr>
+<a class="item" href="https://ld246.com/article/1546941897596">分布式社区网络</a>
+ <a class="item" href="https://ld246.com/article/1488603534762">开放 API</a>
+</details-menu>
+</div>
+<div class="details">
+<summary>
+<span class="nav__item">
+产品
+<div class="fn__space5"></div>
+<svg class="svg--small nav__svg--show">
+<use xlink:href="#iconChevronDown"></use>
+</svg>
+</span>
+</summary>
+<details-menu class="fn__layer fn__layer--big">
+<a class="item" target="_blank" rel="noopener nofollow" href="https://b3log.org/sym">Symphony 社区系统（Java）</a>
+<a class="item" target="_blank" rel="noopener nofollow" href="https://b3log.org/solo">Solo 博客系统（Java）</a>
+<a class="item" target="_blank" rel="noopener nofollow" href="https://b3log.org/vditor">Vditor 编辑器（TypeScript）</a>
+<a class="item" target="_blank" rel="noopener nofollow" href="https://b3log.org/siyuan">思源笔记（Electron、Go）</a>
+<a class="item" target="_blank" rel="noopener nofollow" href="https://github.com/88250/pipe">Pipe 博客平台（Vue、Go）</a>
+<hr>
+<a class="item" href="https://ld246.com/article/1568439160728">发展计划表</a>
+<a class="item" href="https://ld246.com/article/1571542981532">发展简史</a>
+</details-menu>
+</div>
+<div class="details">
+<summary>
+<span class="nav__item">
+榜单
+<div class="fn__space5"></div>
+<svg class="svg--small nav__svg--show">
+<use xlink:href="#iconChevronDown"></use>
+</svg>
+</span>
+</summary>
+<details-menu class="fn__layer fn__layer--big">
+<a class="item" href="https://ld246.com/top/github/repo">GitHub 仓库排行</a>
+<a class="item" href="https://ld246.com/top/article/reward">帖子打赏排行</a>
+<a class="item" href="https://ld246.com/top/solo">Solo 博客端排行</a>
+<a class="item" href="https://ld246.com/top/point/balance">积分排行</a>
+<a class="item" href="https://ld246.com/top/au/today">活跃度排行</a>
+<a class="item" href="https://ld246.com/top/general">贡献排行</a>
+</details-menu>
+</div>
+<a href="https://github.com/88250/symphony" target="_blank" rel="noopener nofollow" class="nav__item">
+本站基于开源项目 Sym
+<div class="fn__space5"></div>
+<svg class="ft__pink nav__svg--show">
+<use xlink:href="#iconHeart"></use>
+</svg>
+</a>
+<a href="https://routinepanic.com" target="_blank" class="nav__item">
+编程代码问答
+<div class="fn__space5"></div>
+</a>
+</nav>
+<div class="quick-search quick-search--unlogin">
+<input class="quickSearchInput input" type="text" placeholder="Search LianDi via Bing" required="required" />
+</div>
+<div class="user-nav">
+<span id="navLogin" class="nav__item fn__left commonGoLogin">登录</span>
+<span id="navRegister" class="nav__item fn__left commonGoRegister">注册</span>
+</div>
+</div>
+</header>
+<div class="main fn__flex-1">
+<div class="wrapper guide" style="width: auto;max-width: 1240px">
+<div class="module">
+<div class="module-header ft-center">
+<strong>Markdown 教程</strong>
+<div class="ft__smaller ft__fade">
+<span class="commonGoLogin fn__pointer ft-blue">登录</span>后可完整体验<b>上传</b>和<b>录音</b>功能
+</div>
+</div>
+<div class="module-panel">
+<br>
+<div id="md"></div>
+</div>
+</div>
+</div>
+</div>
+<textarea class="fn__none">## 教程
+
+这是一篇讲解如何正确使用 **Markdown** 的排版示例，学会这个很有必要，能让你的文章有更佳清晰的排版。
+
+> 引用文本：Markdown is a text formatting syntax inspired
+
+## 语法指导
+
+### 普通内容
+
+这段内容展示了在内容里面一些排版格式，比如：
+
+- **加粗** - `**加粗**`
+- *倾斜* - `*倾斜*`
+- ~~删除线~~ - `~~删除线~~`
+- `Code 标记` - `` `Code 标记` ``
+- [超级链接](https://ld246.com) - `[超级链接](https://ld246.com)`
+- [username@gmail.com](mailto:username@gmail.com) - `[username@gmail.com](mailto:username@gmail.com)`
+
+### 提及用户
+
+@Vanessa 通过 `@User` 可以在内容中提及用户，被提及的用户将会收到系统通知。
+
+> NOTE:
+>
+> 1. @用户名之后需要有一个空格
+> 2. 新手没有艾特的功能权限
+
+### 表情符号 Emoji
+
+支持大部分标准的表情符号，可使用输入法直接输入，也可手动输入字符格式。通过输入 `:` 触发自动完成，可在个人设置中[设置常用表情](https://ld246.com/settings/function)。
+
+#### 一些表情例子
+
+:smile: :laughing: :dizzy_face: :sob: :cold_sweat: :sweat_smile:  :cry: :triumph: :heart_eyes: :relieved:
+:+1: :-1: :100: :clap: :bell: :gift: :question: :bomb: :heart: :coffee: :cyclone: :bow: :kiss: :pray: :anger:
+
+### 大标题 - Heading 3
+
+你可以选择使用 H1 至 H6，使用 ##(N) 打头。建议帖子或回帖中的顶级标题使用 Heading 3，不要使用 1 或 2，因为 1 是系统站点级，2 是帖子标题级。
+
+> NOTE: 别忘了 # 后面需要有空格！
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+### 图片
+
+```
+![alt 文本](http://image-path.png)
+![alt 文本](http://image-path.png "图片 Title 值")
+```
+
+支持复制粘贴直接上传。
+
+### 代码块
+
+#### 普通
+
+```
+*emphasize*    **strong**
+_emphasize_    __strong__
+var a = 1
+```
+
+#### 语法高亮支持
+
+如果在 ``` 后面跟随语言名称，可以有语法高亮的效果哦，比如:
+
+##### 演示 Go 代码高亮
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, 世界")
+}
+```
+
+##### 演示 Java 高亮
+
+```java
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+
+}
+```
+
+> Tip: 语言名称支持下面这些: `ruby`, `python`, `js`, `html`, `erb`, `css`, `coffee`, `bash`, `json`, `yml`, `xml` ...
+
+### 有序、无序、任务列表
+
+#### 无序列表
+
+- Java
+  - Spring
+    - IoC
+    - AOP
+- Go
+  - gofmt
+  - Wide
+- Node.js
+  - Koa
+  - Express
+
+#### 有序列表
+
+1. Node.js
+   1. Express
+   2. Koa
+   3. Sails
+2. Go
+   1. gofmt
+   2. Wide
+3. Java
+   1. Latke
+   2. IDEA
+
+#### 任务列表
+
+- [x] 发布 Sym
+- [X] 发布 Solo
+- [ ] 预约牙医
+
+### 表格
+
+如果需要展示数据什么的，可以选择使用表格。
+
+| header 1 | header 2 |
+| -------- | -------- |
+| cell 1   | cell 2   |
+| cell 3   | cell 4   |
+| cell 5   | cell 6   |
+
+### 隐藏细节
+
+<details>
+<summary>这里是摘要部分。</summary>
+这里是细节部分。
+</details>
+
+### 段落
+
+空行可以将内容进行分段，便于阅读。（这是第一段）
+
+使用空行在 Markdown 排版中相当重要。（这是第二段）
+
+### 链接引用
+
+[链接文本][链接标识]
+
+[链接标识]: https://b3log.org
+
+```
+[链接文本][链接标识]
+
+[链接标识]: https://b3log.org
+```
+
+### 数学公式
+
+多行公式块：
+
+$$
+\frac{1}{
+  \Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{
+  \frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {
+    1+\frac{e^{-6\pi}}
+    {1+\frac{e^{-8\pi}}{1+\cdots}}
+  }
+}
+$$
+
+行内公式：
+
+公式 $a^2 + b^2 = \color{red}c^2$ 是行内。
+
+### 脑图
+```mindmap
+- 教程
+- 语法指导
+  - 普通内容
+  - 提及用户
+  - 表情符号 Emoji
+    - 一些表情例子
+  - 大标题 - Heading 3
+    - Heading 4
+      - Heading 5
+        - Heading 6
+  - 图片
+  - 代码块
+    - 普通
+    - 语法高亮支持
+      - 演示 Go 代码高亮
+      - 演示 Java 高亮
+  - 有序、无序、任务列表
+    - 无序列表
+    - 有序列表
+    - 任务列表
+  - 表格
+  - 隐藏细节
+  - 段落
+  - 链接引用
+  - 数学公式
+  - 脑图
+  - 流程图
+  - 时序图
+  - 甘特图
+  - 图表
+  - 五线谱
+  - Graphviz
+  - 多媒体
+  - 脚注
+- 快捷键
+```
+
+### 流程图
+
+```mermaid
+graph TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+```
+
+### 时序图
+
+```mermaid
+sequenceDiagram
+    Alice->>John: Hello John, how are you?
+    loop Every minute
+        John-->>Alice: Great!
+    end
+```
+
+### 甘特图
+
+```mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2019-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2019-01-12  , 12d
+    another task      : 24d
+```
+
+### 图表
+
+```echarts
+{
+  "title": { "text": "最近 30 天" },
+  "tooltip": { "trigger": "axis", "axisPointer": { "lineStyle": { "width": 0 } } },
+  "legend": { "data": ["帖子", "用户", "回帖"] },
+  "xAxis": [{
+      "type": "category",
+      "boundaryGap": false,
+      "data": ["2019-05-08","2019-05-09","2019-05-10","2019-05-11","2019-05-12","2019-05-13","2019-05-14","2019-05-15","2019-05-16","2019-05-17","2019-05-18","2019-05-19","2019-05-20","2019-05-21","2019-05-22","2019-05-23","2019-05-24","2019-05-25","2019-05-26","2019-05-27","2019-05-28","2019-05-29","2019-05-30","2019-05-31","2019-06-01","2019-06-02","2019-06-03","2019-06-04","2019-06-05","2019-06-06","2019-06-07"],
+      "axisTick": { "show": false },
+      "axisLine": { "show": false }
+  }],
+  "yAxis": [{ "type": "value", "axisTick": { "show": false }, "axisLine": { "show": false }, "splitLine": { "lineStyle": { "color": "rgba(0, 0, 0, .38)", "type": "dashed" } } }],
+  "series": [
+    {
+      "name": "帖子", "type": "line", "smooth": true, "itemStyle": { "color": "#d23f31" }, "areaStyle": { "normal": {} }, "z": 3,
+      "data": ["18","14","22","9","7","18","10","12","13","16","6","9","15","15","12","15","8","14","9","10","29","22","14","22","9","10","15","9","9","15","0"]
+    },
+    {
+      "name": "用户", "type": "line", "smooth": true, "itemStyle": { "color": "#f1e05a" }, "areaStyle": { "normal": {} }, "z": 2,
+      "data": ["31","33","30","23","16","29","23","37","41","29","16","13","39","23","38","136","89","35","22","50","57","47","36","59","14","23","46","44","51","43","0"]
+    },
+    {
+      "name": "回帖", "type": "line", "smooth": true, "itemStyle": { "color": "#4285f4" }, "areaStyle": { "normal": {} }, "z": 1,
+      "data": ["35","42","73","15","43","58","55","35","46","87","36","15","44","76","130","73","50","20","21","54","48","73","60","89","26","27","70","63","55","37","0"]
+    }
+  ]
+}
+```
+
+### 五线谱
+
+```abc
+X: 24
+T: Clouds Thicken
+C: Paul Rosen
+S: Copyright 2005, Paul Rosen
+M: 6/8
+L: 1/8
+Q: 3/8=116
+R: Creepy Jig
+K: Em
+|:"Em"EEE E2G|"C7"_B2A G2F|"Em"EEE E2G|\
+"C7"_B2A "B7"=B3|"Em"EEE E2G|
+"C7"_B2A G2F|"Em"GFE "D (Bm7)"F2D|\
+1"Em"E3-E3:|2"Em"E3-E2B|:"Em"e2e gfe|
+"G"g2ab3|"Em"gfeg2e|"D"fedB2A|"Em"e2e gfe|\
+"G"g2ab3|"Em"gfe"D"f2d|"Em"e3-e3:|
+```
+
+### Graphviz
+
+```graphviz
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+    node [shape = doublecircle]; S;
+    node [shape = point ]; qi
+
+    node [shape = circle];
+    qi -> S;
+    S  -> q1 [ label = "a" ];
+    S  -> S  [ label = "a" ];
+    q1 -> S  [ label = "a" ];
+    q1 -> q2 [ label = "ddb" ];
+    q2 -> q1 [ label = "b" ];
+    q2 -> q2 [ label = "b" ];
+}
+```
+
+### Flowchart
+
+```flowchart
+st=>start: Start
+op=>operation: Your Operation
+cond=>condition: Yes or No?
+e=>end
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+### 多媒体
+
+支持 v.qq.com，youtube.com，youku.com，coub.com，facebook.com/video，dailymotion.com，.mp4，.m4v，.ogg，.ogv，.webm，.mp3，.wav 链接解析
+
+https://v.qq.com/x/cover/zf2z0xpqcculhcz/y0016tj0qvh.html
+
+### 脚注
+
+这里是一个脚注引用[^1]，这里是另一个脚注引用[^bignote]。
+
+[^1]: 第一个脚注定义。
+[^bignote]: 脚注定义可使用多段内容。
+
+    缩进对齐的段落包含在这个脚注定义内。
+
+    ```
+    可以使用代码块。
+    ```
+
+    还有其他行级排版语法，比如**加粗**和[链接](https://b3log.org)。
+
+```
+这里是一个脚注引用[^1]，这里是另一个脚注引用[^bignote]。
+[^1]: 第一个脚注定义。
+[^bignote]: 脚注定义可使用多段内容。
+
+    缩进对齐的段落包含在这个脚注定义内。
+
+    ```
+    可以使用代码块。
+    ```
+
+    还有其他行级排版语法，比如**加粗**和[链接](https://b3log.org)。
+```
+
+## 快捷键
+
+我们的编辑器支持很多快捷键，具体请参考 [键盘快捷键](https://ld246.com/article/1474030007391)（或者按 "`?` ":smirk_cat:）</textarea>
+<footer class="footer">
+<div class="wrapper">
+<div class="footer-nav fn__flex">
+<div class="fn-flex-1">
+<a href="https://ld246.com/article/1488603534762" target="_blank">API</a>
+<a rel="help" href="https://ld246.com/article/1440573175609" target="_blank">关于</a>
+<a href="https://ld246.com/statistic" rel="nofollow" target="_blank">数据统计</a>
+<a href="https://ld246.com/sponsor" target="_blank">靠爱发电</a>
+<a href="https://ld246.com/subscribe/siyuan" target="_blank">思源笔记订阅</a>
+</div>
+<div class="ft__smaller">
+&COPY; 2022 <a rel="copyright noopener nofollow" href="https://ld246.com" target="_blank">链滴</a>
+</div>
+</div>
+<div class="fn__flex">
+<div class="fn__flex-1">
+<a href="https://github.com/88250/symphony" target="_blank" rel="noopener nofollow" class="tooltipped tooltipped__n footer__share" aria-label="本站基于开源项目 Sym">
+<svg class="icon-github">
+<use xlink:href="#iconGithub"></use>
+</svg>
+</a>
+<a target="_blank" rel="noopener nofollow" class="tooltipped tooltipped__n footer__share" aria-label="关注微博" href="https://weibo.com/b3log">
+<svg class="icon-weibo">
+<use xlink:href="#iconWeibo"></use>
+</svg>
+</a>
+<span class="ft__smaller">
+记录生活，连接点滴
+</span>
+</div>
+<div class="ft__smaller">
+<a href="https://beian.miit.gov.cn" rel="noopener nofollow" target="_blank">滇ICP备14007358号-5</a> •
+<a href="https://b3log.org/sym" rel="noopener nofollow" target="_blank">Sym</a>
+v3.6.4
+</div>
+</div>
+</div>
+</footer>
+<script type="400341154408d83425184257-text/javascript">
+  var Label = {
+    confirmPushBlogLabel: '确定将本文推送到对应的博客端吗？',
+    finishedLabel: '已被领完',
+    receivedLabel: '已领取',
+    hongbaoMsgLabel: '大吉大利，今晚吃鱼！',
+    numberLabel: '个数',
+    amountToLabel: '总计',
+    hongbaoLabel: '红包',
+    currentCopyPasteTail: 0,
+    currentViewArticleThemeLight: 'light',
+    currentViewArticleThemeDark: 'dark',
+    currentViewCodeBlockThemeLight: 'github',
+    currentViewCodeBlockThemeDark: 'dracula',
+    forwardServer: 'https://link.ld246.com',
+    currentSkinMode: 0,
+    commentReviewRequired: false,
+    comment2ReviewRequired: false,
+    contextPath: '',
+    reviewingLabel: '审核中',
+    reviewLabel: '审核',
+    sendLabel: '发送',
+    advanceSearchLabel: '高级搜索',
+    notFoundPostLabel: '帖子不存在',
+    notFoundTagLabel: '标签不存在',
+    notFoundUserLabel: '用户不存在',
+    getNewChatLabel: '查看新的聊天内容',
+    systemEmptyLabel: '暂时没有内容，请稍后再来看看',
+    historyLabel: '历史',
+    updateHistoryLabel: '编辑历史',
+    thoughtLabel: '思绪',
+    link26: 'https://ld246.com/article/1558427377784',
+    viewAllMsgLabel: '查看所有消息',
+    deReplyLabel: '&nbsp;的回帖',
+    openLabel: '展开',
+    foldLabel: '折叠',
+    offTopicLabel: '偏离主题',
+    outdatedLabel: '已过时',
+    link1: 'https://ld246.com/article/1474030007391',
+    link25: 'https://ld246.com/article/1464416402922',
+    comment2UseSceneLabel: '仅支持_斜体_、**加粗**以及超链接，请浏览<a href="https://ld246.com/article/1555259445024" target="_blank">使用场景说明</a>了解更多细节',
+    notificationComment2edLabel: '收到的评论',
+    comment2ErrorLabel: '评论内容长度 4-4096',
+    sc403Label: '因权限不足操作已被禁止',
+    consoleDebugInfo1: '%c链滴%c\n  记录生活，连接点滴\n  b3log.org\n  Copyright © 2012-present',
+    chickenEggLabel: '没有鸡，哪来的鸡蛋呢？',
+    myFileLabel: '我的文件',
+    lang: 'zh-cmn-Hans',
+    iPadTipLabel: '⚠️ 第一次点击查看 hover 效果，第二次点击才是真正的点击',
+    useHorizontalScreenLabel: '请使用横屏全屏模式进行浏览，以便获取最佳体验',
+    updateArticlePollFailedLabel: '投票表单没有插入到正文中，如果不需要投票表单请先进行删除',
+    insertLabel: '插入',
+    updateLabel: '更新',
+    removeLabel: '删除',
+    addOptionLabel: '添加选项',
+    isPublicLabel: '是否公开投票人',
+    endTimeLabel: '投票如需定时结束，请完整设置年/月/日 时:分',
+    typeLabel: '类型',
+    optionLabel: '选项',
+    titleLabel: '标题',
+    multipleSelectionLabel: '多选',
+    singleSelectionLabel: '单选',
+    pollLabel: '投票',
+    commentEditorPlaceholderLabel: '请输入回帖内容',
+    confirmRemoveLabel: '确定删除么？',
+    editLabel: '编辑',
+    confirmLogoutLabel: '确定需要登出？',
+    version: '3.6.4',
+    moreLabel: '更多',
+    hideLabel: '隐藏',
+    chatLabel: '聊天',
+    openOrgImgLabel: '查看原图',
+    downloadLabel: '下载',
+    revolveLabel: '旋转',
+    nextPageLabel: '下一页',
+    YCYLabel: '异次元空间',
+    syntaxHighlighting: 'chroma',
+    searchEmptyLabel: '暂时没有 [${key}] 相关的数据',
+    statUserLabel: '用户',
+    tagLabel: '标签',
+    articleLabel: '帖子',
+    updateNameTipLabel: '（修改用户名需消耗 {point} 积分）',
+    certainLabel: '确定',
+    deactivateAccountLabel: '永久停用账号',
+    deactivateAccountTipLabel: '<ul><li>账号一旦停用就无法恢复，请不要随意尝试</li><li>用户名会被 <code>someone101</code> 填充（后面的数字是用户编号），密码会被随机数重置</li><li>清空用户昵称、自我标签、URL、简介、头像、站点连接、邮寄地址等信息</li><li>所有隐私设置开关将恢复默认的公开状态</li><li>解绑关联的第三方社交账号、手机</li><li><strong>用户名、手机号、绑定的第三方账号以后将不能再次被使用</strong></li><li>用户状态被置为停用，禁止登录</li></ul>',
+    deactivateAccountTip2Label: '停用账号须知',
+    tipLabel: '提示',
+    reportContentLabel: '请说明举报理由',
+    miscLabel: '其他',
+    reportSuccLabel: '举报已提交，稍后具有管理权限的用户会进行审核，感谢你花时间来帮助社区，让我们共同维护好这里的环境氛围 ❤️',
+    spamADLabel: '垃圾广告',
+    pornographicLabel: '低俗色情',
+    violationOfRegulationsLabel: '违法违规',
+    allegedlyInfringingLabel: '涉嫌侵权',
+    personalAttacksLabel: '人身攻击',
+    posingAccountLabel: '冒充账号',
+    spamADAccountLabel: '垃圾广告账号',
+    personalInfoViolationLabel: '个人信息违规',
+    reportLabel: '举报',
+    noMessageLabel: '无消息',
+    invalidQnAOfferPointLabel: '悬赏积分必须大于等于 20',
+    submitLabel: '提交',
+    nextStepLabel: '下一步',
+    breezemoonLabel: '清风明月',
+    breezemoonDescriptionLabel: '只与清风、明月为伴。',
+    invalidUserNameLabel: '用户名仅允许使用数字或字母，最大长度 20',
+    finshLabel: '完成',
+    invalidEmailLabel: '邮箱地址格式有误',
+    confirmPwdErrorLabel: '密码输入不一致',
+    captchaErrorLabel: '验证码错误',
+    imgMaxSize: 10485760,
+    fileMaxSize: 20971520,
+    miniPostfix: '.min',
+    messageLabel: '消息',
+    desktopNotificationTemplateLabel: '你有 ${count} 条未读消息',
+    invalidPasswordLabel: '密码格式有误（数字及字母组合，长度 6-16）',
+    loginNameErrorLabel: '登录名称长度 1-256',
+    followLabel: '关注',
+    unfollowLabel: '取消关注',
+    symphonyLabel: '链滴',
+    cmtLabel: '回帖',
+    collectLabel: '收藏',
+    uncollectLabel: '取消收藏',
+    copyLabel: '复制',
+    copiedLabel: '已复制',
+    servePath: 'https://ld246.com',
+    staticServePath: 'https://ld246.com',
+    isLoggedIn: false,
+    funNeedLoginLabel: '登录后才能使用该功能',
+    notificationCommentedLabel: '收到的回帖',
+    notificationReplyLabel: '收到的回复',
+    notificationAtLabel: '提及我的',
+    notificationFollowingLabel: '我关注的',
+    pointLabel: '积分',
+    sameCityLabel: '同城',
+    systemLabel: '系统',
+    walletLabel: '钱包',
+    newFollowerLabel: '新关注者',
+    makeAsReadLabel: '标记为已读',
+    commaLabel: '，',
+    setEmotionLabel: '设置常用表情',
+    year: '2022',
+    mouseEffects: false,
+    killBrowserLabel: '<div class="fn__clear vditor-reset">为了让浏览器更好的发展，人类更加的进步，拥有更好的体验，让我们放弃使用那些过时、不安全的浏览器。<p>你可以下载：</p><ul class="fn__left"><li><a href="http://www.google.com/chrome" target="_blank" rel="noopener nofollow">谷歌浏览器</a></li><li><a href="http://www.mozilla.com/" target="_blank" rel="noopener nofollow">火狐</a></li><li><a href="http://se.360.cn/" target="_blank" rel="noopener nofollow">360</a> 或者 <a href="https://www.baidu.com/s?wd=%E6%B5%8F%E8%A7%88%E5%99%A8" target="_blank" rel="noopener nofollow">其它浏览器</a></li></ul><img class="fn__right" alt="Kill IE6" title="Kill IE6" src="/images/kill-browser.png"></div>',
+    killBrowserTitleLabel: '让我们放弃使用那些过时、不安全的浏览器吧！',
+    activityStartEatingSnakeTipLabel: '玩一局需要 【{point}】积分，确定开始么？',
+    activityStartGobangTipLabel: '玩一局需要 【{point}】积分，确定开始么？',
+    activityAskForDrawLabel: '对方请求和棋，是否同意？',
+    newVersionAvailableLabel: '新版本可用',
+    colonLabel: '：',
+    upToDateLabel: '已是最新版 ✨',
+    amountNotEmpty: '数额不能为空',
+    updateFailLabel: '更新失败',
+    updateSuccLabel: '更新成功',
+    transferSuccLabel: '转账成功',
+    invalidUserURLLabel: '链接需要符合 URL（协议://地址），最大长度 96',
+    tagsErrorLabel: '最多包含 4 个标签，每个标签长度 1-9，请勿包含特殊符号',
+    invalidUserQQLabel: 'QQ 号必须为数字，最大长度 12',
+    invalidUserIntroLabel: '个人简介最大长度 255',
+    invalidUserB3KeyLabel: 'B3 Key 最大长度 20',
+    invalidUserB3ClientURLLabel: 'B3 博客接口最大长度 150',
+    invalidUserNicknameLabel: '昵称最大长度 20',
+    invalidPhoneLabel: '手机号有误',
+    uploadLabel: '上传',
+    helpLabel: '帮助',
+    articleTitleErrorLabel: '帖子标题长度 1-255',
+    articleContentErrorLabel: '帖子内容长度 0-{maxArticleContentLength}',
+    recordDeniedLabel: '授权后才可以使用音频',
+    recordDeviceNotFoundLabel: '录音设备加载失败',
+    audioRecordingLabel: '[录音中]',
+    uploadingLabel: '[上传中请稍候]',
+    articleRewardPointErrorLabel: '打赏区积分必须为正整数',
+    discussionLabel: '机要',
+    commonAtUser: 'false',
+    commentErrorLabel: '回帖内容长度 1-4096',
+    notAllowCmtLabel: '该帖已关闭回帖',
+    upLabel: '赞同',
+    downLabel: '反对',
+    removedLabel: '相关数据已被删除',
+    stickConfirmLabel: '确定要消费 {point} 积分来置顶该帖子吗？',
+    noRevisionLabel: '权限不足或内容没有发生过改变。',
+    thankedLabel: '已感谢',
+    thankLabel: '感谢',
+    isAdminLoggedIn: false,
+    adminLabel: '管理',
+    thankSelfLabel: '老王，你家的瓜熟了~',
+    replyLabel: '回复',
+    referenceLabel: '引用',
+    goCommentLabel: '跳转到回帖',
+    commonUpdateCommentPermissionLabel: '更新回帖',
+    noPermissionLabel: '抱歉，你目前暂时还不能使用该功能，详情请浏览<a href="https://ld246.com/article/1482057214675" target="_blank">社区信任体系</a>',
+    rewardLabel: '打赏',
+    closeLabel: '关闭',
+    invalidAppRoleLabel: '角色有误',
+    cancelLabel: '取消',
+    wsToken: '',
+    adGitHubRepo: String.raw`{"description":"一个汇集了部分安全工具的集成环境","language":"C++","full_name":"Reverier-Xu/ISAE","avatar":"https://avatars.githubusercontent.com/u/41937333?v=4","stargazers_count":"50","html_url":"https://github.com/Reverier-Xu/ISAE"}`,
+    csrfToken: '',
+  }
+</script>
+<!--[if le IE 8]>
+ <script>
+     document.getElementsByTagName(
+             'div')[0].innerHTML = '<div class="dialog"><div class="dialog__bg"></div><div class="dialog__main" style="width:768px;top:' +
+             (document.documentElement.clientHeight - 287) / 2 + 'px;left:' +
+             (document.documentElement.clientWidth - 768) / 2 + 'px">'
+             +
+             '<div style="height: 20px" class="dialog__header fn__clear" onselectstart="return false;"><h2>让我们放弃使用那些过时、不安全的浏览器吧！</h2></div><div class="dialog__content"><div class="fn__clear vditor-reset">为了让浏览器更好的发展，人类更加的进步，拥有更好的体验，让我们放弃使用那些过时、不安全的浏览器。<p>你可以下载：</p><ul class="fn__left"><li><a href="http://www.google.com/chrome" target="_blank" rel="noopener nofollow">谷歌浏览器</a></li><li><a href="http://www.mozilla.com/" target="_blank" rel="noopener nofollow">火狐</a></li><li><a href="http://se.360.cn/" target="_blank" rel="noopener nofollow">360</a> 或者 <a href="https://www.baidu.com/s?wd=%E6%B5%8F%E8%A7%88%E5%99%A8" target="_blank" rel="noopener nofollow">其它浏览器</a></li></ul><img class="fn__right" alt="Kill IE6" title="Kill IE6" src="/images/kill-browser.png"></div></div></div></div>'
+ </script>
+ <![endif]-->
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="400341154408d83425184257-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"71c1d398eda67add","token":"77d76d95a63e4732bae1c62a19423da8","version":"2022.6.0","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>

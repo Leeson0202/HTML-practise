@@ -1,0 +1,61 @@
+# Java核心技术
+## 一、Java基本语法
+### 1、关键字与保留字
+#### 关键字的定义和特点
+- 被Java语言赋予了特殊含义，用做专门用途的字符串（单词）
+- 关键字中所有字母都为小写
+
+#### 保留字的定义
+- 现有Java版本尚未使用，但以后版本可能会作为关键字使用。命名标识符时要避免使用这些保留字。
+
+> 总结：48个关键字、2个保留字、3个字面值
+
+```
+用于定义数据类型的关键字
+class interface enum byte short int long float double char boolean void
+用于定义流程控制的关键字
+if else switch case default while do for break continue return
+用于定义访问权限修饰符的关键字
+private protected public
+用于定义类，函数，变量修饰符的关键字
+abstract final static synchronized
+用于定义类与类之间关系的关键字
+extends implements
+用于定义建立实例及引用实例，判断实例的关键字
+new this super instanceof
+用于异常处理的关键字
+try catch finally throw throws
+用于包的关键字
+package import
+其他修饰符关键字
+native strictfp transient volatile assert
+
+保留字
+goto const
+
+用于定义数据类型值的字面值
+true false null
+```
+
+### 2、标识符
+#### 标识符的定义
+- Java对各种变量、方法和类等要素命名时使用的字符序列称为标识符
+
+> 技巧：凡是自己可以起名字的地方都叫标识符
+
+#### 定义合法标识符规则
+- 由26个英文字母大小写，0-9，_或$组成
+- 数字不可以开头
+- 不可以使用关键字和保留字，但能包含关键字和保留字
+- Java中严格区分大小写，长度无限制
+- 标识符不能包含空格
+
+#### Java中的名称命名规范
+- 包名：多单词组成时所有字母都小写：xxxyyyzzz
+- 类名、接口名：多单词组成时，所有单词的首字母大写：XxxYyyZzz
+- 变量名、方法名：多单词组成时，第一个单词首字母小写，第二个单词开始每个单词首字母大写：xxxYyyZzz
+- 常量名：所有字母都大写，多单词时每个单词用下划线连接：XXX_YYY_ZZZ
+
+> 注意点：
+> 1、在起名字时，为了提高阅读性，要尽量有意义，“见名知意”。
+> 2、Java采用unicode字符集，因此标识符也可以使用汉字声明，但是不建议使用。
